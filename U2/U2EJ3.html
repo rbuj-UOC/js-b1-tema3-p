@@ -30,38 +30,62 @@
 -->
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>T3U2_EX3</title>
-		<style type="text/css">
-			.title > h1{
-				font-size: 30px;
-				text-align: center;	
-				background-color: black;
-				border: 2px solid blue;
-				color: yellow;
-				font-weight: bold;
-			}
-			.paragraph {
-				padding: 2px;
-				text-align: center;				
-				font-size: 14px;
-			}
-		</style>
-    </head>
-    <body>
-        <div id="myContent" class="content"></div>
-    </body>
-	<script defer id="solutionJS">
-        //Escribe aquí tu solución / escriviu aquí la vostra solució:
-		
-	</script>
-    <script defer id="test">
-        /**
-        * TEST
-        * The purpose of this code is purely for TESTING PURPOSES, 
-        * Do not modify this script
-        */
-        window.test = [document.querySelector("#myContent"), createParagraph, createTitle];
-    </script>
-</html>	
+
+<head>
+  <meta charset="UTF-8">
+  <title>T3U2_EX3</title>
+  <style type="text/css">
+    .title>h1 {
+      font-size: 30px;
+      text-align: center;
+      background-color: black;
+      border: 2px solid blue;
+      color: yellow;
+      font-weight: bold;
+    }
+
+    .paragraph {
+      padding: 2px;
+      text-align: center;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="myContent" class="content"></div>
+</body>
+<script defer id="solutionJS">
+  // Escribe aquí tu solución / escriviu aquí la vostra solució:
+  function createTitle(text) {
+    if (!document.querySelector(".title")) {
+      const title = document.createElement("div");
+      title.classList.add("title");
+      const h1 = document.createElement("h1");
+      h1.textContent = text;
+      title.appendChild(h1);
+      document.getElementById("myContent").appendChild(title);
+    }
+  }
+
+  function createParagraph(text) {
+    const title = document.querySelector(".title");
+    if (title) {
+      const paragraph = document.createElement("p");
+      paragraph.classList.add("paragraph");
+      paragraph.textContent = text;
+      title.appendChild(paragraph);
+    }
+  }
+
+</script>
+<script defer id="test">
+  /**
+  * TEST
+  * The purpose of this code is purely for TESTING PURPOSES, 
+  * Do not modify this script
+  */
+  window.test = [document.querySelector("#myContent"), createParagraph, createTitle];
+</script>
+
+</html>

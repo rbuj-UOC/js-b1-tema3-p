@@ -1,102 +1,122 @@
 <!--
-//T3: Primeros pasos con JavaScript en una aplicación web / Primers passos amb JavaScript en una aplicació web
-//U4: Formularios / Formularis
+// T3: Primeros pasos con JavaScript en una aplicación web / Primers passos amb
+//     JavaScript en una aplicació web
+// U4: Formularios / Formularis
 
   -- CASTELLANO
-  -- EJERCICIO 3.4.3 ENUNCIADO: 
-	Dado el siguiente código HTML de un formulario, en donde se recogen los datos de los vehículos de un concesionario, complétalo de manera que, si se intenta enviar 
-	sin haber seleccionado al menos un extra, nos  muestre dentro del elemento [myContent] un texto que indique literalmente lo siguiente "You must select almost one extra", 
-    ya que al menos, se debe seleccionar un extra para proceder a enviar el formulario y no nos permita enviar el formulario.
-	NOTA: para evitar el envío de un formulario en JS disponemos de event.preventDefault(); siendo event el evento capturado por parámetro en la función addEventListener
+  -- EJERCICIO 3.4.3 ENUNCIADO:
+	Dado el siguiente código HTML de un formulario, en donde se recogen los datos
+  de los vehículos de un concesionario, complétalo de manera que, si se intenta
+  enviar sin haber seleccionado al menos un extra, nos  muestre dentro del
+  elemento [myContent] un texto que indique literalmente lo siguiente "You must
+  select almost one extra", ya que al menos, se debe seleccionar un extra para
+  proceder a enviar el formulario y no nos permita enviar el formulario.
+	NOTA: para evitar el envío de un formulario en JS disponemos de
+  event.preventDefault(); siendo event el evento capturado por parámetro en la
+  función addEventListener
 
 	-- CATALÀ
 	-- EXERCICI 3.4.3 ENUNCIAT:
-	Donat el codi HTML següent d'un formulari, on es recullen les dades dels vehicles d'un concessionari, completa'l de manera que, si s'intenta enviar
-	sense haver seleccionat almenys un extra, ens mostri dins de l'element [myContent] un text que indiqui literalment el següent "You must select almost one extra",
-    ja que almenys, cal seleccionar un extra per procedir a enviar el formulari i no ens permeti enviar el formulari.
-	NOTA: per evitar enviar un formulari en JS disposem del mètode event.preventDefault(); sent event l'esdeveniment capturat per paràmetre a la funció addEventListener
-
+	Donat el codi HTML següent d'un formulari, on es recullen les dades dels
+  vehicles d'un concessionari, completa'l de manera que, si s'intenta enviar
+  sense haver seleccionat almenys un extra, ens mostri dins de l'element
+  [myContent] un text que indiqui literalment el següent "You must select almost
+  one extra", ja que almenys, cal seleccionar un extra per procedir a enviar el
+  formulari i no ens permeti enviar el formulari.
+	NOTA: per evitar enviar un formulari en JS disposem del mètode
+  event.preventDefault(); sent event l'esdeveniment capturat per paràmetre a la
+  funció addEventListener
 -->
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Cars Form</title>
-        <style>
-            .container {
-                display: flex;
-                justify-content: center;
-            }
-            .content {
-                padding: 20px;
-                text-align: center;			
-                font-size:40px;
-                color: blue;
-                width: 100%;
-            }
-        </style>
-    </head>
-    <body>
-        <h1>Cars Form</h1>
 
-        <div class="container">
-            
-        <form>
-            <label for="car-model">Car Model:</label>
-            <input type="text" id="car-model" name="car-model">
-            <br><br>            
-            <label for="year-of-registration">Year of Registration:</label>
-            <input type="number" id="year-of-registration" name="year-of-registration">
-            <br><br>
+<head>
+  <title>Cars Form</title>
+  <style>
+    .container {
+      display: flex;
+      justify-content: center;
+    }
 
-            <label>Fuel Type:</label>
-            <label for="diesel">Diesel</label>
-            <input type="radio" id="diesel" name="fuel-type" value="diesel">
-            <label for="gasoline">Gasoline</label>
-            <input type="radio" id="gasoline" name="fuel-type" value="gasoline">
-            <br><br>
+    .content {
+      padding: 20px;
+      text-align: center;
+      font-size: 40px;
+      color: blue;
+      width: 100%;
+    }
+  </style>
+</head>
 
-            <label>Vehicle Extras:</label>
-            <input type="checkbox" id="gps" name="extras" value="gps">
-            <label for="gps">GPS</label>
-            <br>
-            <input type="checkbox" id="leather-seats" name="extras" value="leather-seats">
-            <label for="leather-seats">Leather Seats</label>
-            <br>
-            <input type="checkbox" id="sunroof" name="extras" value="sunroof">
-            <label for="sunroof">Sunroof</label>
-            <br>
-            <input type="checkbox" id="armored-windows" name="extras" value="armored-windows">
-            <label for="armored-windows">Armored windows</label>
-            <br>
-            <input type="checkbox" id="tinted-windows" name="extras" value="tinted-windows">
-            <label for="tinted-windows">Tinted windows</label>
-            <br><br>
+<body>
+  <h1>Cars Form</h1>
 
-            <label for="car-brand">Car Brand:</label><br>
-            <select id="car-brand" name="car-brand">
-                <option value="">Choose a brand</option>
-                <option value="audi">Audi</option>
-                <option value="bmw">BMW</option>
-                <option value="mercedes">Mercedes</option>
-                <option value="toyota">Toyota</option>
-            </select>
-            <br><br>            
-            <input type="submit" value="Submit" id="mySubmit">
-        </form>
-        </div>
-		<div id="myContent" class="content"></div>
-    </body>
-    <script defer id="solutionJS">
-        //Escribe aquí tu solución / escriviu aquí la vostra solució:
+  <div class="container">
 
-    </script>
-    <script defer id="test">
-        /**
-        * TEST
-        * The purpose of this code is purely for TESTING PURPOSES, 
-        * Do not modify this script
-        */  
-        document.querySelector('#mySubmit').dispatchEvent(new Event('click'));
-        window.test = document.querySelector('#myContent').textContent;
-    </script>
+    <form>
+      <label for="car-model">Car Model:</label>
+      <input type="text" id="car-model" name="car-model">
+      <br><br>
+      <label for="year-of-registration">Year of Registration:</label>
+      <input type="number" id="year-of-registration" name="year-of-registration">
+      <br><br>
+
+      <label>Fuel Type:</label>
+      <label for="diesel">Diesel</label>
+      <input type="radio" id="diesel" name="fuel-type" value="diesel">
+      <label for="gasoline">Gasoline</label>
+      <input type="radio" id="gasoline" name="fuel-type" value="gasoline">
+      <br><br>
+
+      <label>Vehicle Extras:</label>
+      <input type="checkbox" id="gps" name="extras" value="gps">
+      <label for="gps">GPS</label>
+      <br>
+      <input type="checkbox" id="leather-seats" name="extras" value="leather-seats">
+      <label for="leather-seats">Leather Seats</label>
+      <br>
+      <input type="checkbox" id="sunroof" name="extras" value="sunroof">
+      <label for="sunroof">Sunroof</label>
+      <br>
+      <input type="checkbox" id="armored-windows" name="extras" value="armored-windows">
+      <label for="armored-windows">Armored windows</label>
+      <br>
+      <input type="checkbox" id="tinted-windows" name="extras" value="tinted-windows">
+      <label for="tinted-windows">Tinted windows</label>
+      <br><br>
+
+      <label for="car-brand">Car Brand:</label><br>
+      <select id="car-brand" name="car-brand">
+        <option value="">Choose a brand</option>
+        <option value="audi">Audi</option>
+        <option value="bmw">BMW</option>
+        <option value="mercedes">Mercedes</option>
+        <option value="toyota">Toyota</option>
+      </select>
+      <br><br>
+      <input type="submit" value="Submit" id="mySubmit">
+    </form>
+  </div>
+  <div id="myContent" class="content"></div>
+</body>
+<script defer id="solutionJS">
+  // Escribe aquí tu solución / escriviu aquí la vostra solució:
+  document.querySelector("#mySubmit").addEventListener("click", (event) => {
+    const checked = [...document.querySelectorAll("input[name='extras']")].some(e => e.checked);
+    if (!checked) {
+      event.preventDefault();
+      document.getElementById("myContent").textContent = "You must select almost one extra";
+    }
+  })
+</script>
+<script defer id="test">
+  /**
+  * TEST
+  * The purpose of this code is purely for TESTING PURPOSES, do not modify this
+  * script
+  */
+  document.querySelector('#mySubmit').dispatchEvent(new Event('click'));
+  window.test = document.querySelector('#myContent').textContent;
+</script>
+
 </html>

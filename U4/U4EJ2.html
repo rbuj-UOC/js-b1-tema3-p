@@ -1,93 +1,115 @@
-<!--//T3: Primeros pasos con JavaScript en una aplicación web / Primers passos amb JavaScript en una aplicació web
-//U4: Formularios / Formularis
+<!--
+// T3: Primeros pasos con JavaScript en una aplicación web / Primers passos amb
+//     JavaScript en una aplicació web
+// U4: Formularios / Formularis
 
   -- CASTELLANO
   -- EJERCICIO 3.4.2 ENUNCIADO: 
-	Dado el siguiente código HTML de un formulario, en donde se recogen los datos de los vehículos de un concesionario, escribe un script de manera que, si en los extras se selecciona 
-	"tinted windows" (cristales tintados) o "armored windows" (cristales blindados) no sea posible seleccionar la opción de techo corredizo (sunroof) ni viceversa,
-	debido a que son incompatibles por políticas de seguridad.
+	Dado el siguiente código HTML de un formulario, en donde se recogen los datos
+  de los vehículos de un concesionario, escribe un script de manera que, si en
+  los extras se selecciona "tinted windows" (cristales tintados) o "armored
+  windows" (cristales blindados) no sea posible seleccionar la opción de techo
+  corredizo (sunroof) ni viceversa, debido a que son incompatibles por políticas
+  de seguridad.
 
 	-- CATALÀ
 	-- EXERCICI 3.4.2 ENUNCIAT:
-	Donat el següent codi HTML d'un formulari, on es recullen les dades dels vehicles d'un concessionari, escriu un script de manera que, si en els extres se selecciona 
-	"tinted windows" (vidres tintats) o "armored windows" (vidres blindats) no sigui possible seleccionar l'opció de sostre corredís (sunroof) ni viceversa, 
-	a causa que són incompatibles per polítiques de seguretat.
+	Donat el següent codi HTML d'un formulari, on es recullen les dades dels
+  vehicles d'un concessionari, escriu un script de manera que, si en els extres
+  se selecciona "tinted windows" (vidres tintats) o "armored windows" (vidres
+  blindats) no sigui possible seleccionar l'opció de sostre corredís (sunroof)
+  ni viceversa, a causa que són incompatibles per polítiques de seguretat.
 -->
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Cars Form</title>
-    </head>
-    <body>
-        <h1>Cars Form</h1>
 
-        <form>
-        <label for="car-model">Car Model:</label>
-        <input type="text" id="car-model" name="car-model">
-        <br><br>
-        
-        <label for="year-of-registration">Year of Registration:</label>
-        <input type="number" id="year-of-registration" name="year-of-registration">
-        <br><br>
+<head>
+  <title>Cars Form</title>
+</head>
 
-        <label>Fuel Type:</label>
-        <label for="diesel">Diesel</label>
-        <input type="radio" id="diesel" name="fuel-type" value="diesel">
-        <label for="gasoline">Gasoline</label>
-        <input type="radio" id="gasoline" name="fuel-type" value="gasoline">
-        <br><br>
+<body>
+  <h1>Cars Form</h1>
 
-        <label>Vehicle Extras:</label>
-        <input type="checkbox" id="gps" name="extras" value="gps">
-        <label for="gps">GPS</label>
-        <br>
-        <input type="checkbox" id="leather-seats" name="extras" value="leather-seats">
-        <label for="leather-seats">Leather Seats</label>
-        <br>
-        <input type="checkbox" id="sunroof" name="extras" value="sunroof">
-        <label for="sunroof">Sunroof</label>
-        <br>
-        <input type="checkbox" id="armored-windows" name="extras" value="armored-windows">
-        <label for="armored-windows">Armored windows</label>
-        <br>
-        <input type="checkbox" id="tinted-windows" name="extras" value="tinted-windows">
-        <label for="tinted-windows">Tinted windows</label>
-        <br><br>
+  <form>
+    <label for="car-model">Car Model:</label>
+    <input type="text" id="car-model" name="car-model">
+    <br><br>
 
-        <label for="car-brand">Car Brand:</label><br>
-        <select id="car-brand" name="car-brand">
-            <option value="">Choose a brand</option>
-            <option value="audi">Audi</option>
-            <option value="bmw">BMW</option>
-            <option value="mercedes">Mercedes</option>
-            <option value="toyota">Toyota</option>
-        </select>
-        <br><br>
-        
-        <input type="submit" value="Submit">
-        </form>
-        <script defer id="solutionJS">
-        //Escribe aquí tu solución / escriviu aquí la vostra solució:
+    <label for="year-of-registration">Year of Registration:</label>
+    <input type="number" id="year-of-registration" name="year-of-registration">
+    <br><br>
 
-        </script>
-        <script defer id="test">
-            /**
-            * TEST
-            * The purpose of this code is purely for TESTING PURPOSES, 
-            * Do not modify this script
-            */
-            let resultTest = new Array();
-            
-            document.querySelector('#armored-windows').checked = true;
-            document.querySelector('#tinted-windows').checked = true;
-            document.querySelector('#sunroof').dispatchEvent(new Event('change'));
-            resultTest.push([document.querySelector('#armored-windows').checked, document.querySelector('#tinted-windows').checked]);
-            document.querySelector('#sunroof').checked = true;
-            document.querySelector('#armored-windows').dispatchEvent(new Event('change'));
-            resultTest.push(document.querySelector('#sunroof').checked);
-            document.querySelector('#tinted-windows').dispatchEvent(new Event('change'));
-            resultTest.push(document.querySelector('#sunroof').checked);
-            window.test = resultTest;
-        </script>
-    </body>
+    <label>Fuel Type:</label>
+    <label for="diesel">Diesel</label>
+    <input type="radio" id="diesel" name="fuel-type" value="diesel">
+    <label for="gasoline">Gasoline</label>
+    <input type="radio" id="gasoline" name="fuel-type" value="gasoline">
+    <br><br>
+
+    <label>Vehicle Extras:</label>
+    <input type="checkbox" id="gps" name="extras" value="gps">
+    <label for="gps">GPS</label>
+    <br>
+    <input type="checkbox" id="leather-seats" name="extras" value="leather-seats">
+    <label for="leather-seats">Leather Seats</label>
+    <br>
+    <input type="checkbox" id="sunroof" name="extras" value="sunroof">
+    <label for="sunroof">Sunroof</label>
+    <br>
+    <input type="checkbox" id="armored-windows" name="extras" value="armored-windows">
+    <label for="armored-windows">Armored windows</label>
+    <br>
+    <input type="checkbox" id="tinted-windows" name="extras" value="tinted-windows">
+    <label for="tinted-windows">Tinted windows</label>
+    <br><br>
+
+    <label for="car-brand">Car Brand:</label><br>
+    <select id="car-brand" name="car-brand">
+      <option value="">Choose a brand</option>
+      <option value="audi">Audi</option>
+      <option value="bmw">BMW</option>
+      <option value="mercedes">Mercedes</option>
+      <option value="toyota">Toyota</option>
+    </select>
+    <br><br>
+
+    <input type="submit" value="Submit">
+  </form>
+  <script defer id="solutionJS">
+    // Escribe aquí tu solución / escriviu aquí la vostra solució:
+    function unselectExtra(event) {
+      if (event.target.id === "tinted-windows" || event.target.id === "armored-windows") {
+        document.querySelector("#sunroof").checked = false;
+      }
+      else if (event.target.id === "sunroof") {
+        document.querySelector("#armored-windows").checked = false;
+        document.querySelector("#tinted-windows").checked = false;
+      }
+    }
+
+    document.querySelectorAll("input[name=extras]").forEach((input) => {
+      input.addEventListener("change", unselectExtra)
+    })
+  </script>
+  <script defer id="test">
+    /**
+    * TEST
+    * The purpose of this code is purely for TESTING PURPOSES, do not modify
+    * this script
+    */
+    let resultTest = new Array();
+
+    document.querySelector('#armored-windows').checked = true;
+    document.querySelector('#tinted-windows').checked = true;
+    document.querySelector('#sunroof').dispatchEvent(new Event('change'));
+    resultTest.push([document.querySelector('#armored-windows').checked, document.querySelector('#tinted-windows').checked]);
+    document.querySelector('#sunroof').checked = true;
+    document.querySelector('#armored-windows').dispatchEvent(new Event('change'));
+    resultTest.push(document.querySelector('#sunroof').checked);
+    document.querySelector('#tinted-windows').dispatchEvent(new Event('change'));
+    resultTest.push(document.querySelector('#sunroof').checked);
+    window.test = resultTest;
+  </script>
+</body>
+
 </html>

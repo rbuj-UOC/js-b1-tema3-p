@@ -23,35 +23,49 @@
 -->
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>T3U2_EX2</title>
-		<style type="text/css" id="solutionCSS">
-			.content {
-				padding: 20px;
-				text-align: center;				
-			}
-			.normalContent{
-				font-size: 10px;
-				background-color: grey;
-			}
-            /*Escribe aquí tu solución / escriviu aquí la vostra solució:*/
-            
-        </style>
-    </head>
-    <body>
-        <div id="myContent" class="content normalContent">INITIAL CONTENT</div>
-        <script defer id="solutionJS">
-            //Escribe aquí tu solución / escriviu aquí la vostra solució:
-			
-        </script>
-        <script defer id="test">
-            /**
-            * TEST
-            * The purpose of this code is purely for TESTING PURPOSES, 
-            * Do not modify this script
-            */
-            window.test = document.querySelector("#myContent");
-        </script>
-    </body>
-</html>	
+
+<head>
+  <meta charset="UTF-8">
+  <title>T3U2_EX2</title>
+  <style type="text/css" id="solutionCSS">
+    .content {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .normalContent {
+      font-size: 10px;
+      background-color: grey;
+    }
+
+    /*Escribe aquí tu solución / escriviu aquí la vostra solució:*/
+    .featuredContent {
+      background-color: black;
+      border: 2px solid blue;
+      color: yellow;
+      font-size: 30px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="myContent" class="content normalContent">INITIAL CONTENT</div>
+  <script defer id="solutionJS">
+    //Escribe aquí tu solución / escriviu aquí la vostra solució:
+    const label = document.getElementById("myContent");
+    label.textContent = "FEATURED CONTENT";
+    label.classList.remove("normalContent");
+    label.classList.add("featuredContent");
+  </script>
+  <script defer id="test">
+    /**
+    * TEST
+    * The purpose of this code is purely for TESTING PURPOSES, 
+    * Do not modify this script
+    */
+    window.test = document.querySelector("#myContent");
+  </script>
+</body>
+
+</html>

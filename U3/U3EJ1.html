@@ -1,63 +1,84 @@
 <!--
-//T3: Primeros pasos con JavaScript en una aplicación web / Primers passos amb JavaScript en una aplicació web
-//U3: Eventos / Esdeveniments
+// T3: Primeros pasos con JavaScript en una aplicación web / Primers passos amb
+//     JavaScript en una aplicació web
+// U3: Eventos / Esdeveniments
 
-    -- CASTELLANO
-    -- EJERCICIO 3.3.1 ENUNCIADO: 
-	Dado el siguiente documento HTML, en donde se representan 3 objetos SVG (un círculo rojo, un rectángulo verde y un triángulo naranja) se nos pide:
-    Utilizar el método "addEventListener" para agregar un evento al pasar el ratón por encima (mouseover) a cada uno de los elementos SVG de manera que,
-    cuando se detecte el evento, cambie el color del elemento por el color del elemento inmediatamente a su derecha (para el caso del triángulo, tomará el 
-    valor del color que tiene definido el primer elemento, el círculo en este caso, al no tener más elementos a su derecha).
-	
-    -- CATALÀ
-    -- EXERCICI 3.3.1 ENUNCIAT: 
-    Donat el següent document HTML, on es representen 3 objectes SVG (un cercle vermell, un rectangle verd i un triangle taronja) se'ns demana:
-    Utilitzar el mètode "addEventListener" per afegir un esdeveniment en passar el ratolí per sobre (mouseover) a cadascun dels elements SVG de manera que,
-    quan es detecti l'esdeveniment, canvieu el color de l'element pel color de l'element immediatament a la dreta (per al cas del triangle, prendrà el
-    valor del color que té definit el primer element, el cercle en aquest cas, en no tenir més elements a la dreta).
+  -- CASTELLANO
+  -- EJERCICIO 3.3.1 ENUNCIADO:
+  Dado el siguiente documento HTML, en donde se representan 3 objetos SVG (un
+  círculo rojo, un rectángulo verde y un triángulo naranja) se nos pide:
+  Utilizar el método "addEventListener" para agregar un evento al pasar el ratón
+  por encima (mouseover) a cada uno de los elementos SVG de manera que, cuando
+  se detecte el evento, cambie el color del elemento por el color del elemento
+  inmediatamente a su derecha (para el caso del triángulo, tomará el valor del
+  color que tiene definido el primer elemento, el círculo en este caso, al no
+  tener más elementos a su derecha).
+
+  -- CATALÀ
+  -- EXERCICI 3.3.1 ENUNCIAT: 
+  Donat el següent document HTML, on es representen 3 objectes SVG (un cercle
+  vermell, un rectangle verd i un triangle taronja) se'ns demana: Utilitzar el
+  mètode "addEventListener" per afegir un esdeveniment en passar el ratolí per
+  sobre (mouseover) a cadascun dels elements SVG de manera que, quan es detecti
+  l'esdeveniment, canvieu el color de l'element pel color de l'element
+  immediatament a la dreta (per al cas del triangle, prendrà el valor del color
+  que té definit el primer element, el cercle en aquest cas, en no tenir més
+  elements a la dreta).
 -->
 <!DOCTYPE html>
 <html>
-  <head>
-	<meta charset="UTF-8">
-	<title>T3U2_EX1</title>
-    <style>
-      .red{
-		    fill:red;
-      }
-      .green{
-        fill: green;
-      }
-      .orange{
-        fill: orange;
-      }
-      .svg-container {
-        display: flex;
-        justify-content: center;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="svg-container">
-      <svg width="600px" height="200">
-        <circle cx="50" cy="50" r="40" class="red" id="circle"></circle>
-        <rect x="260" y="20" width="60" height="60" class="green" id="rect"></rect>
-        <polygon points="540,20 580,80 500,80" class="orange" id="polygon"></polygon>
-      </svg>
-    </div>
-    <script defer id="solutionJS">
-        //Escribe aquí tu solución / escriviu aquí la vostra solució:
-          
-	</script>
-    <script defer id="test">
-        /**
-        * TEST
-        * The purpose of this code is purely for TESTING PURPOSES, 
-        * Do not modify this script
-        */
-        document.getElementById('circle').dispatchEvent(new Event('mouseover'));
-        document.getElementById('polygon').dispatchEvent(new Event('mouseover'));        
-        window.test = document.querySelector(".svg-container");
-    </script>
-  </body>
+
+<head>
+  <meta charset="UTF-8">
+  <title>T3U2_EX1</title>
+  <style>
+    .red {
+      fill: red;
+    }
+
+    .green {
+      fill: green;
+    }
+
+    .orange {
+      fill: orange;
+    }
+
+    .svg-container {
+      display: flex;
+      justify-content: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="svg-container">
+    <svg width="600px" height="200">
+      <circle cx="50" cy="50" r="40" class="red" id="circle"></circle>
+      <rect x="260" y="20" width="60" height="60" class="green" id="rect"></rect>
+      <polygon points="540,20 580,80 500,80" class="orange" id="polygon"></polygon>
+    </svg>
+  </div>
+  <script defer id="solutionJS">
+    // Escribe aquí tu solución / escriviu aquí la vostra solució:
+    const circle = document.getElementById("circle");
+    const rect = document.getElementById("rect");
+    const polygon = document.getElementById("polygon");
+
+    document.getElementById("circle").addEventListener("mouseover", (event) => { circle.setAttribute("class", rect.getAttribute("class")); });
+    document.getElementById("rect").addEventListener("mouseover", (event) => { rect.setAttribute("class", polygon.getAttribute("class")); });
+    document.getElementById("polygon").addEventListener("mouseover", (event) => { polygon.setAttribute("class", circle.getAttribute("class")); });  
+  </script>
+  <script defer id="test">
+    /**
+    * TEST
+    * The purpose of this code is purely for TESTING PURPOSES, do not modify
+    * this script
+    */
+    document.getElementById('circle').dispatchEvent(new Event('mouseover'));
+    document.getElementById('polygon').dispatchEvent(new Event('mouseover'));
+    window.test = document.querySelector(".svg-container");
+  </script>
+</body>
+
 </html>

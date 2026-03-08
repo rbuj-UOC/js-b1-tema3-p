@@ -5,10 +5,13 @@ const { JSDOM } = require('jsdom');
 describe('test', () => {
   let splitCodeSolution;
   const html = fs.readFileSync('./U4/U4EJ2.html', 'utf-8');
-  const window = new JSDOM(html, { runScripts: "dangerously", resources: "usable" }).window;
-  
+  const window = new JSDOM(html, {
+    runScripts: 'dangerously',
+    resources: 'usable'
+  }).window;
+
   beforeAll(() => {
-    const codeSolution = window.document.getElementById("solutionJS").innerHTML;
+    const codeSolution = window.document.getElementById('solutionJS').innerHTML;
     splitCodeSolution = codeSolution.split('=');
   });
   it('checks if programmed functionality in form works correctly', () => {

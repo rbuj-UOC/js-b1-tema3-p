@@ -1,98 +1,118 @@
 <!--
-//T3: Primeros pasos con JavaScript en una aplicación web / Primers passos amb JavaScript en una aplicació web
-//U3: Eventos / Esdeveniments
+// T3: Primeros pasos con JavaScript en una aplicación web / Primers passos amb
+//     JavaScript en una aplicació web
+// U3: Eventos / Esdeveniments
 
   -- CASTELLANO
-  -- EJERCICIO 3.3.2 ENUNCIADO: 
+  -- EJERCICIO 3.3.2 ENUNCIADO:
 	Dado el siguiente documento HTML, en donde se representan 3 divs se nos pide:
-  Utilizar el método "addEventListener" para agregar un evento al clicar con el ratón sobre cada elemento (click), de manera que,
-  cuando se produzca el evento, se lance una función a la que llamaremos [showClass] que sea capaz de mostrar dentro del elemento
-  [myContent] un texto que indique la clase que posee el elemento clicado.
+  Utilizar el método "addEventListener" para agregar un evento al clicar con el
+  ratón sobre cada elemento (click), de manera que, cuando se produzca el
+  evento, se lance una función a la que llamaremos [showClass] que sea capaz de
+  mostrar dentro del elemento [myContent] un texto que indique la clase que
+  posee el elemento clicado.
 	
   -- CATALÀ
-  -- EXERCICI 3.3.2 ENUNCIAT: 
+  -- EXERCICI 3.3.2 ENUNCIAT:
   Donat el següent document HTML, on es representen 3 divs se'ns demana:
-  Utilitzar el mètode "addEventListener" per afegir un esdeveniment en clicar amb el ratolí sobre cada element (click), de manera que,
-  quan es produeixi l'esdeveniment, es llanci una funció a la qual anomenarem [showClass] que sigui capaç de mostrar dintre de l'element 
-  [myContent] un text amb la classe que té l'element clicat.
+  Utilitzar el mètode "addEventListener" per afegir un esdeveniment en clicar
+  amb el ratolí sobre cada element (click), de manera que, quan es produeixi
+  l'esdeveniment, es llanci una funció a la qual anomenarem [showClass] que
+  sigui capaç de mostrar dintre de l'element [myContent] un text amb la classe
+  que té l'element clicat.
 -->
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>T3U3_EX2</title>
-        <style>
-        .red{
-            background:red;
-            float: left;
-            padding:25px;
-            font-size:80px;
-            margin-top:50px;
-            margin-left:0px;
-            height:100px;
-            width:100px;
-            text-align: center;
-        }
-        .green{
-            background: green;
-            float: left;
-            padding:25px;
-            font-size:80px;
-            margin-top:50px;
-            margin-left:150px;
-            height:100px;
-            width:100px;
-            text-align: center;
-        }
-        .orange{
-            background: orange;
-            float: left;
-            padding:25px;
-            font-size:80px;
-            margin-top:50px;
-            margin-left:150px;
-            height:100px;
-            width:100px;
-            text-align: center;
-        }
-        .container {
-            display: flex;
-            justify-content: center;
-        }
-		.content {
-			padding: 20px;
-			text-align: center;			
-			font-size:40px;
-			color: blue;
-			width: 100%;
-		}
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <div class="red">?</div>
-            <div class="green">?</div>
-            <div class="orange">?</div>
-        </div>
-		<div id="myContent" class="content"></div>
-    </body>
-    <script defer id="solutionJS">
-        //Escribe aquí tu solución / escriviu aquí la vostra solució:
-        
-    </script>
-    <script defer id="test">
-        /**
-        * TEST
-        * The purpose of this code is purely for TESTING PURPOSES, 
-        * Do not modify this script
-        */
-       let resultTest = new Array()
-       document.getElementsByTagName("div")[1].dispatchEvent(new Event('click'));
-       resultTest.push(document.getElementsByTagName("div")[4].innerHTML);
-       document.getElementsByTagName("div")[2].dispatchEvent(new Event('click'));
-       resultTest.push(document.getElementsByTagName("div")[4].innerHTML);
-       document.getElementsByTagName("div")[3].dispatchEvent(new Event('click')); 
-       resultTest.push(document.getElementsByTagName("div")[4].innerHTML);      
-       window.test = resultTest;
-    </script>
+
+<head>
+  <meta charset="UTF-8">
+  <title>T3U3_EX2</title>
+  <style>
+    .red {
+      background: red;
+      float: left;
+      padding: 25px;
+      font-size: 80px;
+      margin-top: 50px;
+      margin-left: 0px;
+      height: 100px;
+      width: 100px;
+      text-align: center;
+    }
+
+    .green {
+      background: green;
+      float: left;
+      padding: 25px;
+      font-size: 80px;
+      margin-top: 50px;
+      margin-left: 150px;
+      height: 100px;
+      width: 100px;
+      text-align: center;
+    }
+
+    .orange {
+      background: orange;
+      float: left;
+      padding: 25px;
+      font-size: 80px;
+      margin-top: 50px;
+      margin-left: 150px;
+      height: 100px;
+      width: 100px;
+      text-align: center;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+    }
+
+    .content {
+      padding: 20px;
+      text-align: center;
+      font-size: 40px;
+      color: blue;
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="red">?</div>
+    <div class="green">?</div>
+    <div class="orange">?</div>
+  </div>
+  <div id="myContent" class="content"></div>
+</body>
+<script defer id="solutionJS">
+  // Escribe aquí tu solución / escriviu aquí la vostra solució:
+  function showClass(event) {
+    document.getElementById("myContent").textContent = event.target.classList[0];
+  }
+
+  const divsParent = document.getElementsByClassName("container")[0];
+
+  const l1 = divsParent.children[0].addEventListener("click", showClass);
+  const l2 = divsParent.children[1].addEventListener("click", showClass);
+  const l3 = divsParent.children[2].addEventListener("click", showClass);
+</script>
+<script defer id="test">
+  /**
+  * TEST
+  * The purpose of this code is purely for TESTING PURPOSES, do not modify this
+  * script
+  */
+  let resultTest = new Array()
+  document.getElementsByTagName("div")[1].dispatchEvent(new Event('click'));
+  resultTest.push(document.getElementsByTagName("div")[4].innerHTML);
+  document.getElementsByTagName("div")[2].dispatchEvent(new Event('click'));
+  resultTest.push(document.getElementsByTagName("div")[4].innerHTML);
+  document.getElementsByTagName("div")[3].dispatchEvent(new Event('click'));
+  resultTest.push(document.getElementsByTagName("div")[4].innerHTML);
+  window.test = resultTest;
+</script>
+
 </html>
